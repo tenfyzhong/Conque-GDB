@@ -30,6 +30,11 @@ if !exists('g:ConqueGdb_GdbExe')
     let g:ConqueGdb_GdbExe = ''
 endif
 
+" Option to enable mapping
+if !exists('g:conque_gdb_enable_mapping')
+    let g:conque_gdb_enable_mapping = 1
+endif
+
 " Option to choose leader key to execute gdb commands.
 if !exists('g:ConqueGdb_Leader')
     let g:ConqueGdb_Leader = '<Leader>'
@@ -109,10 +114,13 @@ else
     exe 'nnoremap <silent> ' . g:ConqueGdb_SetBreak . ' :call conque_gdb#command("break " . expand("%:p") . ":" . line("."))<CR>'
     exe 'nnoremap <silent> ' . g:ConqueGdb_DeleteBreak . ' :call conque_gdb#command("clear " . expand("%:p") . ":" . line("."))<CR>'
 endif
-exe 'nnoremap <silent> ' . g:ConqueGdb_Continue . ' :call conque_gdb#command("continue")<CR>'
-exe 'nnoremap <silent> ' . g:ConqueGdb_Run . ' :call conque_gdb#command("run")<CR>'
-exe 'nnoremap <silent> ' . g:ConqueGdb_Next . ' :call conque_gdb#command("next")<CR>'
-exe 'nnoremap <silent> ' . g:ConqueGdb_Step . ' :call conque_gdb#command("step")<CR>'
-exe 'nnoremap <silent> ' . g:ConqueGdb_Finish . ' :call conque_gdb#command("finish")<CR>'
-exe 'nnoremap <silent> ' . g:ConqueGdb_Backtrace . ' :call conque_gdb#command("backtrace")<CR>'
-exe 'nnoremap <silent> ' . g:ConqueGdb_Print . ' :call conque_gdb#print_word(expand("<cword>"))<CR>'
+
+if g:conque_gdb_enable_mapping
+    exe 'nnoremap <silent> ' . g:ConqueGdb_Continue . ' :call conque_gdb#command("continue")<CR>'
+    exe 'nnoremap <silent> ' . g:ConqueGdb_Run . ' :call conque_gdb#command("run")<CR>'
+    exe 'nnoremap <silent> ' . g:ConqueGdb_Next . ' :call conque_gdb#command("next")<CR>'
+    exe 'nnoremap <silent> ' . g:ConqueGdb_Step . ' :call conque_gdb#command("step")<CR>'
+    exe 'nnoremap <silent> ' . g:ConqueGdb_Finish . ' :call conque_gdb#command("finish")<CR>'
+    exe 'nnoremap <silent> ' . g:ConqueGdb_Backtrace . ' :call conque_gdb#command("backtrace")<CR>'
+    exe 'nnoremap <silent> ' . g:ConqueGdb_Print . ' :call conque_gdb#print_word(expand("<cword>"))<CR>'
+endif

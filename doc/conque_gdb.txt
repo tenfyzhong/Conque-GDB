@@ -246,6 +246,14 @@ However you can change this with the |g:ConqueGdb_Leader| option.
 Note that you need to enable the |ConqueTerm_ReadUnfocused| option for the
 keyboard mappings to work properly. See the help file |conque_term.txt|.
 
+3.6.0 Enable mapping                         *conque_gdb_enable_mapping*
+                                             *g:conque_gdb_enable_mapping*
+
+This option make the mapping enable or not. By default it is:
+>
+    let g:conque_gdb_enable_mapping = 1
+>
+
 3.6.1 Mappings leader                        *conque-gdb-leader*
                                              *g:ConqueGdb_Leader*
 
